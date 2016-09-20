@@ -1,6 +1,6 @@
 # FPE-Rechner
-== DE ==
+<b>== DE ==</b> <br />
 Fett-Protein-Einheiten Rechner
 
-== EN ==
+<b>== EN ==</b><br />
 Fat protein units calculator
