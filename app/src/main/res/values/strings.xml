@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">FPE-Rechner</string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="textViewNote">Diese App soll Diabetikern helfen, die Fett-Protein-Einheiten zu berechnen.\n\nBitte vorher mit einem Facharzt klären!</string>
+    <string name="editTextCho">Kohlenhydrate</string>
+    <string name="choNote">Bitte die Kohlenhydrate eingeben</string>
+    <string name="editTextKcal">Kcal</string>
+    <string name="kcalNote">Bitte die Kalorien eingeben</string>
+    <string name="editTextFactor">Faktor</string>
+    <string name="factorNote">Bitte den Faktor für die Insulinmenge eingeben</string>
+    <string name="buttonCalc">Berechnung</string>
+    <string name="calcResult">Ergebnis:\n</string>
+    <string name="amountOfInsulin">\u0020Einheiten\u0020in\u0020</string>
+    <string name="hoursText">\u0020Std. abgegeben werden.</string>
+    <string name="textFpu">\u0020FPE\n\nEs müssen\u0020</string>
+</resources>
