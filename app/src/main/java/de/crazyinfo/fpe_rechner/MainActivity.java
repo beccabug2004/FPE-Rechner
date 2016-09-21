@@ -81,27 +81,37 @@ public class MainActivity extends Activity
             insulin = (double) Math.round(fpu * factor);        // Insulinmenge gerundet
 
             /*  Stundenvergleich für die Insulinabgabe */
-            int[] checkHours = {3, 4, 5, 7};
+            int[] arrayCheckHours = {3, 4, 5, 7};
 
-            if (kcal >= 100)
+            int checkHours = 0;
+            // string checkHours = "";
+
+            if (kcal >= 100 && kcal < 200)
             {
-                System.out.println(checkHours[1]); // 3 Stunden
+                System.out.println(arrayCheckHours[0]); // 3 Stunden
+                checkHours = arrayCheckHours[0];
+                // checkHours = arrayCheckHours[0].toString();
             }
-            if (kcal >= 200)
+            if (kcal >= 200 && kcal < 300)
             {
-                System.out.println(checkHours[2]); // 4 Stunden
+                System.out.println(arrayCheckHours[1]); // 4 Stunden
+                checkHours = arrayCheckHours[1];
+                // checkHours = arrayCheckHours[1].toString();
             }
-            if (kcal >= 300)
+            if (kcal >= 300 && kcal < 400)
             {
-                System.out.println(checkHours[3]); // 5 Stunden
+                System.out.println(arrayCheckHours[2]); // 5 Stunden
+                checkHours = arrayCheckHours[2];
+                // checkHours = arrayCheckHours[2].toString();
             }
             if (kcal >= 400) {
-                System.out.println(checkHours[4]); // 7 Stunden
+                System.out.println(arrayCheckHours[3]); // 7 Stunden
+                checkHours = arrayCheckHours[3];
+                // checkHours = arrayCheckHours[3].toString();
             }
 
             /* Ergebnisausgabe */
             textViewResult.setText(getString(R.string.calcResult) + fpu + getString(R.string.textFpu) + insulin + getString(R.string.amountOfInsulin) + checkHours + getString(R.string.hoursText));
-
         }
     }
 }
