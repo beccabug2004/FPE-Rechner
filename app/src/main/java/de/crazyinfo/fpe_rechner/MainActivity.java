@@ -1,6 +1,5 @@
 package de.crazyinfo.fpe_rechner;
 
-import java.util.Arrays;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
@@ -44,7 +43,6 @@ public class MainActivity extends Activity
         editTextFactor = (EditText) findViewById(R.id.editTextFactor);
         textViewResult = (TextView) findViewById(R.id.textViewResult);
 
-
         buttonCalc.setOnClickListener(this);
 
         /* Definition der Error Buttons */
@@ -81,33 +79,51 @@ public class MainActivity extends Activity
             insulin = (double) Math.round(fpu * factor);        // Insulinmenge gerundet
 
             /*  Stundenvergleich für die Insulinabgabe */
-            int[] arrayCheckHours = {3, 4, 5, 7};
-
-            int checkHours = 0;
-            // string checkHours = "";
+            String[] arrayCheckHours = {"3", "4", "5", "7 - 8", "0"};
+            //int checkHours = 0;
+            String checkHours = "0";
 
             if (kcal >= 100 && kcal < 200)
             {
                 System.out.println(arrayCheckHours[0]); // 3 Stunden
-                checkHours = arrayCheckHours[0];
-                // checkHours = arrayCheckHours[0].toString();
+                //checkHours = arrayCheckHours[0];
+                checkHours = arrayCheckHours[0].toString();
             }
             if (kcal >= 200 && kcal < 300)
             {
                 System.out.println(arrayCheckHours[1]); // 4 Stunden
-                checkHours = arrayCheckHours[1];
-                // checkHours = arrayCheckHours[1].toString();
+                //checkHours = arrayCheckHours[1];
+                checkHours = arrayCheckHours[1].toString();
             }
             if (kcal >= 300 && kcal < 400)
             {
                 System.out.println(arrayCheckHours[2]); // 5 Stunden
-                checkHours = arrayCheckHours[2];
-                // checkHours = arrayCheckHours[2].toString();
+                //checkHours = arrayCheckHours[2];
+                checkHours = arrayCheckHours[2].toString();
             }
-            if (kcal >= 400) {
+            if (kcal >= 400)
+            {
                 System.out.println(arrayCheckHours[3]); // 7 Stunden
-                checkHours = arrayCheckHours[3];
-                // checkHours = arrayCheckHours[3].toString();
+                //checkHours = arrayCheckHours[3];
+                checkHours = arrayCheckHours[3].toString();
+            }
+            if (fpu < 0)
+            {
+                checkHours = arrayCheckHours[4].toString(); // Wenn Fett-Protein-Einheiten kleiner 0, dann auch 0 Stunden
+            }
+
+            /*  Insulinabgabe kleiner 0 = 0*/
+            double[] arrayInsulin = {0};
+            if (insulin < 0)
+            {
+                insulin = arrayInsulin[0];
+            }
+
+            /*  FPE-Gehalt kleiner 0 = 0*/
+            double[] arrayFpu = {0};
+            if (fpu < 0)
+            {
+                fpu = arrayFpu[0];
             }
 
             /* Ergebnisausgabe */
