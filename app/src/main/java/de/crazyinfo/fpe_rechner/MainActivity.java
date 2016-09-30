@@ -13,8 +13,9 @@ import com.google.android.gms.common.api.GoogleApiClient;
 public class MainActivity extends Activity
 
         implements OnClickListener {
+
     /**
-     * Called when the activity is first created.
+     * Wird aufgerufen, wenn die Aktivität erstellt wird.
      */
 
     /* Variablen für Button, EditText und TextView */
@@ -49,7 +50,8 @@ public class MainActivity extends Activity
         editTextCho.setError(getString(R.string.choNote));
         editTextKcal.setError(getString(R.string.kcalNote));
         editTextFactor.setError(getString(R.string.factorNote));
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
+
+            // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
@@ -62,11 +64,11 @@ public class MainActivity extends Activity
         if (v == buttonCalc) {
 
             /* Variablen deklarieren */
-            double cho;         // Kohlenhydrate
-            double kcal;
-            double factor;
-            double insulin;
-            double fpu;         // Fett-Protein-Einheiten
+            double cho;                 // Kohlenhydrate
+            double kcal;                // Kcal
+            double factor;              // Faktor
+            double insulin;             // Insulin
+            double fpu;                 // Fett-Protein-Einheiten
 
             /* Diese erhält den Wert des Feldes als Zahl (Kohlenhydrate & KCAL & Faktor) */
             cho = Float.valueOf(editTextCho.getText().toString());
@@ -74,56 +76,66 @@ public class MainActivity extends Activity
             factor = Float.valueOf(editTextFactor.getText().toString());
 
             /* Berechnungen */
-            cho = (double) Math.round(cho * 4);                 // Kohlenhydrate * 4
-            fpu = (double) Math.round(kcal - cho) / 100;        // FPE-Gehalt gerundet
-            insulin = (double) Math.round(fpu * factor);        // Insulinmenge gerundet
+            cho = (double) Math.round(cho * 4);                             // Kohlenhydrate * 4
+            fpu = (double) Math.round((kcal - cho) / 100 * 10 * 1) / 10;    // FPE-Gehalt auf eine Nachkommastelle gerundet
+            insulin = (double) Math.round((fpu * factor * 10) * 1) / 10;    // Insulinmenge auf eine Nachkommastelle gerundet
+
 
             /*  Stundenvergleich für die Insulinabgabe */
             String[] arrayCheckHours = {"3", "4", "5", "7 - 8", "0"};
-            //int checkHours = 0;
             String checkHours = "0";
 
             if (kcal >= 100 && kcal < 200)
             {
-                System.out.println(arrayCheckHours[0]); // 3 Stunden
-                //checkHours = arrayCheckHours[0];
+                System.out.println(arrayCheckHours[0]);         // 3 Stunden
                 checkHours = arrayCheckHours[0].toString();
             }
             if (kcal >= 200 && kcal < 300)
             {
-                System.out.println(arrayCheckHours[1]); // 4 Stunden
-                //checkHours = arrayCheckHours[1];
+                System.out.println(arrayCheckHours[1]);         // 4 Stunden
                 checkHours = arrayCheckHours[1].toString();
             }
             if (kcal >= 300 && kcal < 400)
             {
-                System.out.println(arrayCheckHours[2]); // 5 Stunden
-                //checkHours = arrayCheckHours[2];
+                System.out.println(arrayCheckHours[2]);         // 5 Stunden
                 checkHours = arrayCheckHours[2].toString();
             }
             if (kcal >= 400)
             {
-                System.out.println(arrayCheckHours[3]); // 7 Stunden
-                //checkHours = arrayCheckHours[3];
+                System.out.println(arrayCheckHours[3]);         // 7 - 8 Stunden
                 checkHours = arrayCheckHours[3].toString();
             }
-            if (fpu < 0)
+            if (insulin <= 0)
             {
-                checkHours = arrayCheckHours[4].toString(); // Wenn Fett-Protein-Einheiten kleiner 0, dann auch 0 Stunden
+                System.out.println(arrayCheckHours[4]);         // Wenn Insulin kleiner gleich 0, dann auch 0 Stunden
+                checkHours = arrayCheckHours[4].toString();
+            }
+            if (fpu <= 0)
+            {
+                System.out.println(arrayCheckHours[4]);
+                checkHours = arrayCheckHours[4].toString();     // Wenn Fett-Protein-Einheiten kleiner gleich 0, dann auch 0 Stunden
             }
 
-            /*  Insulinabgabe kleiner 0 = 0*/
+            /*  Insulinabgabe prüfen*/
             double[] arrayInsulin = {0};
             if (insulin < 0)
             {
-                insulin = arrayInsulin[0];
+                insulin = arrayInsulin[0];                      // Wenn Insulin kleiner 0, dann auch Insulin 0
+            }
+            if (kcal < 100)
+            {
+                insulin = arrayInsulin[0];                      // Wenn FPU kleiner 0, dann auch FPE 0
             }
 
-            /*  FPE-Gehalt kleiner 0 = 0*/
+            /*  FPE-Gehalt prüfen*/
             double[] arrayFpu = {0};
             if (fpu < 0)
             {
-                fpu = arrayFpu[0];
+                fpu = arrayFpu[0];                              // Wenn FPE kleiner 0, dann auch FPE 0
+            }
+            if (insulin <= 0)
+            {
+                fpu = arrayFpu[0];                              // Wenn Insulin kleiner gleich 0, dann auch FPE 0
             }
 
             /* Ergebnisausgabe */
