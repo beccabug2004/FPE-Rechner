@@ -7,6 +7,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
@@ -46,11 +47,6 @@ public class MainActivity extends Activity
 
         buttonCalc.setOnClickListener(this);
 
-        /* Definition der Error Buttons */
-        editTextCho.setError(getString(R.string.choNote));
-        editTextKcal.setError(getString(R.string.kcalNote));
-        editTextFactor.setError(getString(R.string.factorNote));
-
             // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -60,6 +56,12 @@ public class MainActivity extends Activity
 
     @Override
     public void onClick(View v) {
+
+        /* Prüfen ob Leereingabe vorliegt und als Toast Message ausgeben */
+        if (("".equals(editTextCho.getText().toString().trim()) || "".equals(editTextKcal.getText().toString().trim()) || "".equals(editTextFactor.getText().toString().trim()))){
+            Toast.makeText(this, getString(R.string.noValue), Toast.LENGTH_LONG).show();
+            return;
+        }
 
         if (v == buttonCalc) {
 
