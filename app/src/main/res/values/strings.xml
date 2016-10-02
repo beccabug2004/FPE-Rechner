@@ -1,14 +1,13 @@
 <resources>
-    <string name="app_name">FPE-Rechner</string>
-    <string name="disclaimer">Disclaimer</string>
-    <string name="textViewNote">Diese App soll Diabetikern helfen, die Fett-Protein-Einheiten zu berechnen.\n\nFett-Protein-Einheiten werden zusätzlich auf die Broteinheiten angerechnet.\n\nBitte vorher mit einem Facharzt klären!</string>
-    <string name="editTextCho">Kohlenhydrate</string>
-    <string name="editTextKcal">Kcal</string>
-    <string name="noValue">Bitte Werte übermitteln</string>
-    <string name="editTextFactor">Faktor</string>
-    <string name="buttonCalc">Berechnung</string>
-    <string name="calcResult">\nErgebnis:\n</string>
-    <string name="amountOfInsulin">\u0020IE\u0020\nZeitraum:\u0020</string>
-    <string name="hoursText">\u0020Stunden</string>
-    <string name="textFpu">\u0020FPE\n\nVerzögerter Bolus:\u0020</string>
+    <string name="app_name">FPU-Calculator</string>
+    <string name="textViewNote">This app is designed to help diabetics to calculate the fat protein units.\n\nFat protein units will additionally charged to the bread units. \n\nPlease check with a doctor previously!</string>
+    <string name="editTextCho">Carbohydrates</string>
+    <string name="editTextKcal">Calories</string>
+    <string name="noValue">Please values enter</string>
+    <string name="editTextFactor">Factor</string>
+    <string name="buttonCalc">Calculation</string>
+    <string name="calcResult">\nResult:\n</string>
+    <string name="amountOfInsulin">\u0020IE\u0020\nPeriod:\u0020</string>
+    <string name="hoursText">\u0020hours</string>
+    <string name="textFpu">\u0020FPE\n\nDelayed bolus:\u0020</string>
 </resources>
