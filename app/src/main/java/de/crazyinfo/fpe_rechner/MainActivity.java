@@ -78,7 +78,7 @@ public class MainActivity extends Activity
             factor = Float.valueOf(editTextFactor.getText().toString());
 
             /* Berechnungen */
-            cho = (double) Math.round(cho * 4);                             // Kohlenhydrate * 4
+            cho = Math.abs(cho * 4);                                        // Kohlenhydrate * 4
             fpu = (double) Math.round((kcal - cho) / 100 * 10 * 1) / 10;    // FPE-Gehalt auf eine Nachkommastelle gerundet
             insulin = (double) Math.round((fpu * factor * 10) * 1) / 10;    // Insulinmenge auf eine Nachkommastelle gerundet
 
@@ -142,6 +142,6 @@ public class MainActivity extends Activity
 
             /* Ergebnisausgabe */
             textViewResult.setText(getString(R.string.calcResult) + fpu + getString(R.string.textFpu) + insulin + getString(R.string.amountOfInsulin) + checkHours + getString(R.string.hoursText));
+            }
         }
     }
-}
