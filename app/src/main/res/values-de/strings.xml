@@ -8,7 +8,7 @@
     <string name="editTextFactor">Faktor</string>
     <string name="buttonCalc">Berechnung</string>
     <string name="calcResult">\nErgebnis:\n</string>
-    <string name="amountOfInsulin">\u0020IE\u0020\nZeitraum:\u0020</string>
+    <string name="amountOfInsulin">\u0020Einheiten\u0020\nZeitraum:\u0020</string>
     <string name="hoursText">\u0020Stunden</string>
     <string name="textFpu">\u0020FPE\n\nVerzögerter Bolus:\u0020</string>
 </resources>
