@@ -1,13 +1,24 @@
 <resources>
+    <!-- String for app name -->
     <string name="app_name">FPU-Calculator</string>
-    <string name="textViewNote">This app is designed to help diabetics to calculate the fat protein units.\n\nFat protein units will additionally charged to the bread units. \n\nPlease check with a doctor previously!</string>
+    <!-- String for important text note -->
+    <string name="textViewNote">This app is designed, to help diabetics, to calculate the fat protein units.\n\nFat protein units will additionally to the bread units calculated.\n\nPlease check with a doctor previously!</string>
+    <!-- String for the calculation of carbohydrates -->
     <string name="editTextCho">carbohydrates</string>
+    <!-- String for the calculation of kcal -->
     <string name="editTextKcal">kcal</string>
-    <string name="noValue">Please values enter</string>
+    <!-- String for the calculation of factor -->
     <string name="editTextFactor">factor</string>
+    <!-- String for the calculation button -->
     <string name="buttonCalc">Calculation</string>
-    <string name="calcResult">\nResult:\n</string>
-    <string name="amountOfInsulin">\u0020units\u0020\nPeriod:\u0020</string>
-    <string name="hoursText">\u0020hours</string>
-    <string name="textFpu">\u0020FPE\n\nDelayed bolus:\u0020</string>
+    <!-- String for the calculation result -->
+    <string name="calcResult">Result:\n</string>
+    <!-- String for the calculation result period -->
+    <string name="amountOfInsulin">\u0020IU\u0020in\u0020</string>
+    <!-- String for the calculation result hours -->
+    <string name="hoursText">\u0020hours\u0020give\u0020off</string>
+    <!-- String for the calculation result delayed bolus -->
+    <string name="textFpu">\u0020FPU\n\n</string>
+    <!-- String for toast error message -->
+    <string name="noValue">Please values transmitted!</string>
 </resources>
