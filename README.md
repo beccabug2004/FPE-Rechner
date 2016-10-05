@@ -6,7 +6,7 @@ Fett-Protein-Einheiten Rechner
 Fat protein units calculator
 
 ## Screenshots
-<img src="" border="1" alt="" />
+<img src="" border="1" alt="http://www.bilder-upload.eu/thumb/986bab-1475699200.png" />
 <img src="" border="1" alt="" />
 
 
