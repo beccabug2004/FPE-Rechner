@@ -1,24 +1,24 @@
 <resources>
     <!-- String for app name -->
-    <string name="app_name">FPE-Rechner</string>
+    <string name="app_name">HCGP-calculador</string>
     <!-- String for important text note -->
-    <string name="textViewNote">Diese App soll Diabetikern helfen, die Fett-Protein-Einheiten zu berechnen.\n\nFett-Protein-Einheiten werden zusätzlich auf die Broteinheiten angerechnet.\n\nBitte vorher mit einem Facharzt klären!</string>
+    <string name="textViewNote">Esta aplicacion quiere ayudar diabeticos a calcular el bolo necesario para comidas con muchas grasas y proteinas.\n\nUnidades para grasas y proteinas se suman a las unidades para los HC.\n\nAntes de usar por favor consultar un medico!</string>
     <!-- String for the calculation of carbohydrates -->
-    <string name="editTextCho">Kohlenhydrate</string>
+    <string name="editTextCho">Hydratos de carbono</string>
     <!-- String for the calculation of kcal -->
-    <string name="editTextKcal">Kcal</string>
+    <string name="editTextKcal">calorias</string>
     <!-- String for the calculation of factor -->
-    <string name="editTextFactor">Faktor</string>
+    <string name="editTextFactor">factor</string>
     <!-- String for the calculation button -->
-    <string name="buttonCalc">Berechnung</string>
+    <string name="buttonCalc">calculacion</string>
     <!-- String for the calculation result fpu -->
-    <string name="calcResult">Ergebnis:\n</string>
+    <string name="calcResult">Resultado:\n</string>
     <!-- String for the calculation result period -->
     <string name="amountOfInsulin">\u0020IE\u0020in\u0020</string>
     <!-- String for the calculation result hours -->
-    <string name="hoursText">\u0020Stunden\u0020abgeben</string>
+    <string name="hoursText">\u0020horas\u0020emitir</string>
     <!-- String for the calculation result delayed bolus -->
-    <string name="textFpu">\u0020FPE\n\n</string>
+    <string name="textFpu">\u0020HCGP\n</string>
     <!-- String for toast error message -->
-    <string name="noValue">Bitte Werte übermitteln!</string>
+    <string name="noValue">Por favor comunicar datos!</string>
 </resources>
