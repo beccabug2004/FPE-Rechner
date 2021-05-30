@@ -20,11 +20,11 @@ public class MainActivity extends Activity
      */
 
     /* Variablen für Button, EditText und TextView */
-    private Button buttonCalc;                                                                      // Button "Berechnung"
-    private EditText editTextCho;                                                                   // Kohlenhydrate
+    private Button buttonCalc;                                                                      // "Calculation" button
+    private EditText editTextCho;                                                                   // carbohydrates
     private EditText editTextKcal;                                                                  // KCAL
-    private EditText editTextFactor;                                                                // Faktor
-    private TextView textViewResult;                                                                // Ergebnis
+    private EditText editTextFactor;                                                                // factor
+    private TextView textViewResult;                                                                // Result
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -57,7 +57,7 @@ public class MainActivity extends Activity
     @Override
     public void onClick(View v) {
 
-        /* Prüfen ob Leereingabe vorliegt und als Toast Message ausgeben */
+        /* Check whether there is an empty entry and output it as a toast message */
         if (("".equals(editTextCho.getText().toString().trim()) || "".equals(editTextKcal.getText().toString().trim()) || "".equals(editTextFactor.getText().toString().trim()))){
             Toast.makeText(this, getString(R.string.noValue), Toast.LENGTH_LONG).show();
             return;
@@ -65,71 +65,71 @@ public class MainActivity extends Activity
 
         if (v == buttonCalc) {
 
-            /* Variablen deklarieren */
-            double cho;                 // Kohlenhydrate
+            /* Declare variables */
+            double cho;                 // Carbohydrate
             double kcal;                // Kcal
-            double factor;              // Faktor
+            double factor;              // Factor
             double insulin;             // Insulin
-            double fpu;                 // Fett-Protein-Einheiten gerundet
+            double fpu;                 // Rounded fat protein units
 
-            /* Diese erhält den Wert des Feldes als Zahl (Kohlenhydrate & KCAL & Faktor) */
+            /* This receives the value of the field as a number (carbohydrates & KCAL & factor) */
             cho = Float.valueOf(editTextCho.getText().toString());
             kcal = Float.valueOf(editTextKcal.getText().toString());
             factor = Float.valueOf(editTextFactor.getText().toString());
 
-            /* Berechnungen */
-            cho = Math.abs(cho * 4);                                                                // Kohlenhydrate * 4
-            fpu = (double) Math.round(((kcal - cho) / 100 * 10) * 1) / 10;                          // FPE-Gehalt auf eine Nachkommastelle gerundet
-            insulin = (double) Math.round(((kcal - cho) / 100 * factor * 10) * 1) / 10;             // Insulinmenge auf eine Nachkommastelle gerundet
+            /* Calculations */
+            cho = Math.abs(cho * 4);                                                                // Carbohydrates * 4
+            fpu = (double) Math.round(((kcal - cho) / 100 * 10) * 1) / 10;                          // FPE content rounded to one decimal place
+            insulin = (double) Math.round(((kcal - cho) / 100 * factor * 10) * 1) / 10;             // Amount of insulin rounded to one decimal place
 
-            /*  Stundenvergleich für die Insulinabgabe */
+            /*  Hour comparison for insulin delivery */
             String[] arrayCheckHours = {"3", "4", "5", "7 - 8", "0"};
             String checkHours = "0";
 
             if (kcal >= 100 && kcal < 200) {
-                System.out.println(arrayCheckHours[0]);         // 3 Stunden
+                System.out.println(arrayCheckHours[0]);         // 3 Hours
                 checkHours = arrayCheckHours[0].toString();
             }
             if (kcal >= 200 && kcal < 300) {
-                System.out.println(arrayCheckHours[1]);         // 4 Stunden
+                System.out.println(arrayCheckHours[1]);         // 4 Hours
                 checkHours = arrayCheckHours[1].toString();
             }
             if (kcal >= 300 && kcal < 400) {
-                System.out.println(arrayCheckHours[2]);         // 5 Stunden
+                System.out.println(arrayCheckHours[2]);         // 5 Hours
                 checkHours = arrayCheckHours[2].toString();
             }
             if (kcal >= 400) {
-                System.out.println(arrayCheckHours[3]);         // 7 - 8 Stunden
+                System.out.println(arrayCheckHours[3]);         // 7 - 8 Hours
                 checkHours = arrayCheckHours[3].toString();
             }
             if (insulin <= 0) {
-                System.out.println(arrayCheckHours[4]);         // Wenn Insulin kleiner gleich 0, dann auch 0 Stunden
+                System.out.println(arrayCheckHours[4]);         // If insulin is less than or equal to 0, then also 0 hours
                 checkHours = arrayCheckHours[4].toString();
             }
             if (fpu <= 0) {
                 System.out.println(arrayCheckHours[4]);
-                checkHours = arrayCheckHours[4].toString();     // Wenn Fett-Protein-Einheiten kleiner gleich 0, dann auch 0 Stunden
+                checkHours = arrayCheckHours[4].toString();     // If fat-protein units are less than or equal to 0, then also 0 hours
             }
 
-            /*  Insulinabgabe prüfen*/
+            /*  Check insulin delivery*/
             double[] arrayInsulin = {0};
             if (insulin < 0) {
-                insulin = arrayInsulin[0];                      // Wenn Insulin kleiner 0, dann auch Insulin 0
+                insulin = arrayInsulin[0];                      // If insulin is less than 0, then also insulin 0
             }
             if (kcal < 100) {
-                insulin = arrayInsulin[0];                      // Wenn Kcal kleiner 0, dann auch Insulin 0
+                insulin = arrayInsulin[0];                      // If Kcal is less than 0, then also insulin 0
             }
 
-            /*  FPE-Gehalt prüfen*/
+            /*  Check the FPE content*/
             double[] arrayFpu = {0};
             if (fpu < 0) {
-                fpu = arrayFpu[0];                              // Wenn FPE kleiner 0, dann auch FPE 0
+                fpu = arrayFpu[0];                              // If FPE is less than 0, then also FPE 0
             }
             if (insulin <= 0) {
-                fpu = arrayFpu[0];                              // Wenn Insulin kleiner gleich 0, dann auch FPE 0
+                fpu = arrayFpu[0];                              // If insulin is less than or equal to 0, then FPE 0 as well
             }
 
-            /* Ergebnisausgabe */
+            /* Results output */
             textViewResult.setText(getString(R.string.calcResult) + fpu + getString(R.string.textFpu) + insulin + getString(R.string.amountOfInsulin) + checkHours + getString(R.string.hoursText));
         }
     }
